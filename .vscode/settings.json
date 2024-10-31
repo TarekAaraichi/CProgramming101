@@ -1,0 +1,16 @@
+{
+    "makefile.makePath": "C:\\msys64\\mingw64\\bin\\mingw32-make",
+    "makefile.makefilePath": ".\\Makefile",
+    "makefile.launchConfigurations": [
+        {
+            "cwd": "c:\\Users\\rek_t\\Desktop\\Academic\\Nackademin\\C och C++\\Kursmaterial\\Codes\\Extra �vningar",
+            "binaryPath": "c:\\Users\\rek_t\\Desktop\\Academic\\Nackademin\\C och C++\\Kursmaterial\\Codes\\Extra �vningar\\main.exe",
+            "binaryArgs": []
+        },
+        {
+            "cwd": "c:\\Users\\rek_t\\Desktop\\Academic\\Nackademin\\C och C++\\Kursmaterial\\Codes\\Extra ovningar",
+            "binaryPath": "c:\\Users\\rek_t\\Desktop\\Academic\\Nackademin\\C och C++\\Kursmaterial\\Codes\\Extra ovningar\\main.exe",
+            "binaryArgs": []
+        }
+    ]
+}
