@@ -1,186 +1,191 @@
-/* Lab 1
-Ett program som MATAR IN TAL tills dess att man skriver 0.
-Talen måste vara POSITIVA annars skris ut "Negativa tal är inte tillåtna"
-När man skriver 0 så skrivs ut vilket det största och minsta talet var
-*/
-
-// #include <stdio.h>
-
-// int main() {
-//     int num, max = 0, min = 0;
-//     int first = 1; // Används för att skilja första talet från efterföljande
-
-//     while (1) {
-//         printf("Mata in ett positivt tal (0 för att avsluta): ");
-//         scanf("%d", &num);
-
-//         if (num < 0) {
-//             printf("Negativa tal är inte tillåtna\n");
-//             continue;
-//         }
-        
-//         if (num == 0) {
-//             break; // Avsluta inmatning
-//         }
-        
-//         if (first) {
-//             // Första positiva talet sätter både min och max
-//             max = num;
-//             min = num;
-//             first = 0;
-//         } else {
-//             if (num > max) max = num;
-//             if (num < min) min = num;
-//         }
-//     }
-
-//     if (!first) {
-//         printf("Största talet: %d\n", max);
-//         printf("Minsta talet: %d\n", min);
-//     } else {
-//         printf("Inga giltiga tal matades in.\n");
-//     }
-
-//     return 0;
-// }
-
-/* Lab 2
-En kommun har gjort följande prognos för befolkningsutvecklingen de närmaste åren
-Vid början av 2022 hade kommunen 26000 invånare
-Antal födda under ett år 0.7%
-Antal avlidna under ett år 0.6%
-Antalet inflyttade per år uppskattas till 300
-Antal utflyttade per år uppskattas till 325
-
-I följande program matas in ett årtal (efter 2022) 
-och den ska beräkna kommunens beräknade befolkning för det året
-*/
-
-// #include <stdio.h>
-
-// int main() {
-//     int startPopulation = 26000; // Befolkning i början av 2022
-//     double birthRate = 0.007;    // 0.7% födda per år
-//     double deathRate = 0.006;    // 0.6% avlidna per år
-//     int immigrants = 300;        // Antal inflyttade per år
-//     int emigrants = 325;         // Antal utflyttade per år
-
-//     int year;
-//     printf("Mata in ett årtal (efter 2022): ");
-//     scanf("%d", &year);
-
-//     if (year <= 2022) {
-//         printf("Årtalet måste vara efter 2022.\n");
-//         return 1; // Avslutar programmet om årtalet inte är efter 2022
-//     }
-
-//     int yearsToCalculate = year - 2022;
-//     int population = startPopulation;
-
-//     for (int i = 0; i < yearsToCalculate; i++) {
-//         int births = population * birthRate;
-//         int deaths = population * deathRate;
-
-//         population = population + births - deaths + immigrants - emigrants;
-//     }
-
-//     printf("Beräknad befolkning för år %d: %d\n", year, population);
-    
-//     return 0;
-// }
-
-/* Lab 3
-Ett program där man matar in tal och en operator sedan räknas ut resultatet
-Operators ska kunna vara * / + -
-*/
-
-// #include <stdio.h>
-
-// int main() {
-//     double num1, num2, result;
-//     char operator;
-
-//     printf("Mata in första talet: ");
-//     if (scanf("%lf", &num1) != 1) {
-//         printf("Felaktig inmatning! Förväntat ett tal.\n");
-//         return 1;
-//     }
-
-//     printf("Mata in andra talet: ");
-//     if (scanf("%lf", &num2) != 1) {
-//         printf("Felaktig inmatning! Förväntat ett tal.\n");
-//         return 1;
-//     }
-
-//     printf("Ange operator (+, -, *, /): ");
-//     scanf(" %c", &operator); // Mellanslag före %c för att ignorera tidigare newline
-
-//     switch (operator) {
-//         case '+':
-//             result = num1 + num2;
-//             printf("%.2lf %c %.2lf = %.2lf\n", num1, operator, num2, result);
-//             break;
-
-//         case '-':
-//             result = num1 - num2;
-//             printf("%.2lf %c %.2lf = %.2lf\n", num1, operator, num2, result);
-//             break;
-
-//         case '*':
-//             result = num1 * num2;
-//             printf("%.2lf %c %.2lf = %.2lf\n", num1, operator, num2, result);
-//             break;
-
-//         case '/':
-//             if (num2 == 0) {
-//                 printf("Fel: Division med noll är inte tillåten.\n");
-//             } else {
-//                 result = num1 / num2;
-//                 printf("%.2lf %c %.2lf = %.2lf\n", num1, operator, num2, result);
-//             }
-//             break;
-
-//         default:
-//             printf("Fel: Ogiltig operator. Använd +, -, * eller /.\n");
-//             return 1;
-//     }
-
-//     return 0;
-// }
-
-/* Lab 4
-Ett program där man först anger HUR MÅNGA tal som ska matas in
-Sen matar man in så många tal och skrivs ut hur många av dessa 
-tal som var mellan 100 och 200
+/* 
+Lab 1
+A program that inputs NUMBERS until the user types 0.
+The numbers must be POSITIVE; otherwise, it outputs "Negative numbers are not allowed".
+When 0 is typed, it prints out what the largest and smallest number was.
 */
 
 #include <stdio.h>
 
 int main() {
-    int antal, tal, count = 0;
+    int num, max = 0, min = 0;
+    int first = 1; // Used to distinguish the first number from subsequent ones
 
-    // Ber användaren om antalet tal
-    printf("Hur många tal vill du mata in? ");
-    if (scanf("%d", &antal) != 1 || antal <= 0) {
-        printf("Felaktig inmatning! Förväntat ett positivt heltal.\n");
+    while (1) {
+        printf("Enter a positive number (0 to quit): ");
+        scanf("%d", &num);
+
+        if (num < 0) {
+            printf("Negative numbers are not allowed\n");
+            continue;
+        }
+        
+        if (num == 0) {
+            break; // End input
+        }
+        
+        if (first) {
+            // The first positive number sets both min and max
+            max = num;
+            min = num;
+            first = 0;
+        } else {
+            if (num > max) max = num;
+            if (num < min) min = num;
+        }
+    }
+
+    if (!first) {
+        printf("Largest number: %d\n", max);
+        printf("Smallest number: %d\n", min);
+    } else {
+        printf("No valid numbers were entered.\n");
+    }
+
+    return 0;
+}
+
+/* 
+Lab 2
+A municipality has made the following forecast for population development in the coming years:
+At the beginning of 2022, the municipality had 26,000 inhabitants.
+
+Number of births per year: 0.7%.
+Number of deaths per year: 0.6%.
+The number of immigrants per year is estimated to be 300.
+The number of emigrants per year is estimated to be 325.
+
+In the following program, a year (after 2022) is input,
+and it calculates the municipality's estimated population for that year.
+*/
+
+#include <stdio.h>
+
+int main() {
+    int startPopulation = 26000; // Population at the beginning of 2022
+    double birthRate = 0.007;    // 0.7% born per year
+    double deathRate = 0.006;    // 0.6% died per year
+    int immigrants = 300;        // Number of immigrants per year
+    int emigrants = 325;         // Number of emigrants per year
+
+    int year;
+    printf("Enter a year (after 2022): ");
+    scanf("%d", &year);
+
+    if (year <= 2022) {
+        printf("The year must be after 2022.\n");
+        return 1; // Exit the program if the year is not after 2022
+    }
+
+    int yearsToCalculate = year - 2022;
+    int population = startPopulation;
+
+    for (int i = 0; i < yearsToCalculate; i++) {
+        int births = population * birthRate;
+        int deaths = population * deathRate;
+
+        population = population + births - deaths + immigrants - emigrants;
+    }
+
+    printf("Estimated population for the year %d: %d\n", year, population);
+    
+    return 0;
+}
+
+/* 
+Lab 3
+A program (calculator) where you input numbers and an operator, then the result is calculated.
+Operators can be * / + -.
+*/
+
+#include <stdio.h>
+
+int main() {
+    double num1, num2, result;
+    char operator;
+
+    printf("Enter the first number: ");
+    if (scanf("%lf", &num1) != 1) {
+        printf("Invalid input! Expected a number.\n");
         return 1;
     }
 
-    // Matar in de angivna talen och räknar hur många som är mellan 100 och 200
-    for (int i = 0; i < antal; i++) {
-        printf("Mata in tal %d: ", i + 1);
-        if (scanf("%d", &tal) != 1) {
-            printf("Felaktig inmatning! Förväntat ett heltal.\n");
+    printf("Enter the second number: ");
+    if (scanf("%lf", &num2) != 1) {
+        printf("Invalid input! Expected a number.\n");
+        return 1;
+    }
+
+    printf("Enter operator (+, -, *, /): ");
+    scanf(" %c", &operator); // Space before %c to ignore previous newline
+
+    switch (operator) {
+        case '+':
+            result = num1 + num2;
+            printf("%.2lf %c %.2lf = %.2lf\n", num1, operator, num2, result);
+            break;
+
+        case '-':
+            result = num1 - num2;
+            printf("%.2lf %c %.2lf = %.2lf\n", num1, operator, num2, result);
+            break;
+
+        case '*':
+            result = num1 * num2;
+            printf("%.2lf %c %.2lf = %.2lf\n", num1, operator, num2, result);
+            break;
+
+        case '/':
+            if (num2 == 0) {
+                printf("Error: Division by zero is not allowed.\n");
+            } else {
+                result = num1 / num2;
+                printf("%.2lf %c %.2lf = %.2lf\n", num1, operator, num2, result);
+            }
+            break;
+
+        default:
+            printf("Error: Invalid operator. Use +, -, * or /.\n");
+            return 1;
+    }
+
+    return 0;
+}
+
+/* 
+Lab 4
+A program where you first specify HOW MANY numbers will be entered.
+Then you input that many numbers and it prints how many of them
+were between 100 and 200.
+*/
+
+#include <stdio.h>
+
+int main() {
+    int countToInput, number, count = 0;
+
+    // Ask the user for the number of entries
+    printf("How many numbers would you like to enter? ");
+    if (scanf("%d", &countToInput) != 1 || countToInput <= 0) {
+        printf("Invalid input! Expected a positive integer.\n");
+        return 1;
+    }
+
+    // Input the specified numbers and count how many are between 100 and 200
+    for (int i = 0; i < countToInput; i++) {
+        printf("Enter number %d: ", i + 1);
+        if (scanf("%d", &number) != 1) {
+            printf("Invalid input! Expected an integer.\n");
             return 1;
         }
 
-        if (tal >= 100 && tal <= 200) {
+        if (number >= 100 && number <= 200) {
             count++;
         }
     }
 
-    // Skriv ut resultatet
-    printf("Antal tal mellan 100 och 200: %d\n", count);
+    // Output the result
+    printf("Count of numbers between 100 and 200: %d\n", count);
 
     return 0;
 }
